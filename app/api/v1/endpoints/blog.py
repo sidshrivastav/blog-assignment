@@ -2,16 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.schemas.blog import BlogPostOut, BlogPostCreate, BlogPostUpdate
 from app.crud.blog import create_post, get_all_posts, get_post, update_post, delete_post
-from app.db.session import SessionLocal
+from app.db.session import get_db
 
 router = APIRouter()
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 @router.post("/posts/", response_model=BlogPostOut)
 def create_blog_post(post: BlogPostCreate, db: Session = Depends(get_db)):
