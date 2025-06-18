@@ -15,6 +15,7 @@ fastapi_app/
 │   ├── schemas/            # Pydantic schemas
 │   ├── crud/               # DB logic
 │   ├── db/                 # DB session/base/init
+│   ├── middlewares/        # Middleware Logics
 │   └── main.py             # App entry point
 ├── tests/                  # Unit/integration tests
 ├── .env                    # App environment variables
@@ -58,7 +59,7 @@ docker-compose up --build
 ```
 
 > ℹ️ The app will be available at: [http://localhost:8000/docs](http://localhost:8000/docs)
-
+> ℹ️ The app logs will be available at: [http://localhost:8000/docs](http://localhost:8000/log-dashboard)
 ---
 
 ## 🧪 Run Tests (Locally)

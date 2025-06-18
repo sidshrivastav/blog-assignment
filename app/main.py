@@ -2,6 +2,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.api.v1.endpoints import blog, auth
 from app.db.base import Base
@@ -31,3 +32,6 @@ def log_dashboard():
     </html>
     """
     return html
+
+# Metrics
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
