@@ -96,18 +96,3 @@ Key | Description
 `JWT_ALGORITHM`   | Algorithm used for JWT
 `ENV`             | App environment (`development`, `production`)
 `DEBUG`           | Enables hot reload & debug logs
-
----
-
-## 📎 Resources
-
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [SQLAlchemy ORM](https://docs.sqlalchemy.org/)
-- [Pydantic](https://docs.pydantic.dev/)
-- [Docker](https://docs.docker.com/)
-
----
-
-## 📬 License
-
-MIT License. Free for personal and commercial use.
