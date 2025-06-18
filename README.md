@@ -20,6 +20,8 @@ fastapi_app/
 ├── tests/                  # Unit/integration tests
 ├── .env                    # App environment variables
 ├── requirements.txt        # Python dependencies
+├── promethus               # Promethus settings
+├── grafana                 # Grafana Provisioning
 ├── docker-compose.yml      # Docker Compose config
 ├── Dockerfile              # App Dockerfile
 └── README.md               # Project documentation
@@ -60,6 +62,8 @@ docker-compose up --build
 
 > ℹ️ The app will be available at: [http://localhost:8000/docs](http://localhost:8000/docs)
 > ℹ️ The app logs will be available at: [http://localhost:8000/docs](http://localhost:8000/log-dashboard)
+> ℹ️ The app promethus metrics will be available at: [http://localhost:9090](http://localhost:9090)
+
 ---
 
 ## 🧪 Run Tests (Locally)
