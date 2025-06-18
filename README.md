@@ -61,7 +61,7 @@ docker-compose up --build
 ```
 
 > ℹ️ The app will be available at: [http://localhost:8000/docs](http://localhost:8000/docs)
-> ℹ️ The app logs will be available at: [http://localhost:8000/docs](http://localhost:8000/log-dashboard)
+> ℹ️ The app logs will be available at: [http://localhost:8000/log-dashboard](http://localhost:8000/log-dashboard)
 > ℹ️ The app promethus metrics will be available at: [http://localhost:9090](http://localhost:9090)
 
 ---
@@ -101,3 +101,41 @@ Key | Description
 `JWT_ALGORITHM`   | Algorithm used for JWT
 `ENV`             | App environment (`development`, `production`)
 `DEBUG`           | Enables hot reload & debug logs
+
+---
+
+## 🔖 Versioning & CI/CD
+
+This project follows **semantic versioning** powered by **Conventional Commits** and automated GitHub Actions.
+
+### Commit Format
+
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+| Type      | Description               | Version Bump |
+|-----------|---------------------------|--------------|
+| `fix:`    | Bug fixes                 | Patch        |
+| `feat:`   | New features              | Minor        |
+| `feat!:` / `BREAKING CHANGE:` | Breaking changes         | Major        |
+| `chore:`  | Maintenance changes       | None         |
+
+**Examples:**
+
+```bash
+git commit -m "fix: correct typo in blog title"
+git commit -m "feat: add tags to blog post"
+git commit -m "feat!: remove author model"
+```
+
+### CI/CD Flow (GitHub Actions)
+
+On each push to the `main` branch, the following automated steps occur:
+
+* **Version bump detection**: Achieved by analyzing commit history using `standard-version`.
+* **Semantic Git Tagging**: A new semantic Git tag (e.g., `v1.2.3`) is created and subsequently pushed to the repository.
+* **Docker Image Build and Push**: A Docker image is built and then pushed to the following container registries:
+    * `docker.io/<your-username>/your-image-name:v1.2.3`
+    * `ghcr.io/<your-username>/your-image-name:v1.2.3`
+* **(Optional) Kubernetes Deployment**: The newly built image can then be deployed to a Kubernetes cluster using `kubectl`, Helm, or Kustomize.
+
+For a complete overview of the workflow, please refer to the `docker.yml` file.
